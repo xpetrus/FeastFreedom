@@ -1,0 +1,17 @@
+.kitchenCard{
+    width: 18rem;
+    margin: 1rem;
+    position: relative;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    
+}
+
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    
+    justify-content: space-around;
+    align-content: flex-start;
+    overflow: auto;
+  }

@@ -23,4 +23,6 @@ urlpatterns = [
     # path(r'api-token-auth/', obtain_jwt_token),
     # path(r'api-token-refresh/', refresh_jwt_token),  # endpoints for login
     url(r'^api/', include('api.urls')),
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))  # email, password, name - register users
 ]

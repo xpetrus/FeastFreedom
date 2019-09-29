@@ -1,1 +1,16 @@
 <p>kitchen works!</p>
+<button class = 'btn btn-danger' (click)="logout()">Log Out</button>
+<div class = "container">
+    <div class = "wrapper">
+        <div *ngFor="let kitchen of tempKitchens" >
+            <div class="card kitchenCard">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{kitchen}}</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
