@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class KitchenComponent implements OnInit {
 
+  tempKitchens = ['Burger King', 'Wendys', 'White Castle'];
+
   constructor(private userService: UserService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
