@@ -1,13 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-html,body {
-    height:100%;
-}
-.container-fluid-height{
-    height:100%;
-    overflow-y: hidden;
-}
-.userLogin{
-    margin: 20% auto;
-    height:30%;
-    width:60%;
+.jumbotron{
+    opacity: 0.95;
+    margin-top: 20%;
+    width: 100%;
+
 }

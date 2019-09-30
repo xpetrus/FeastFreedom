@@ -6,7 +6,7 @@ import { KitchenComponent } from './kitchen/kitchen.component'
 import { MenuComponent } from './menu/menu.component';
 const routes: Routes = [
   {path: '',
-  redirectTo: '/',
+  redirectTo: '/kitchen',
    pathMatch: 'full'},
   {path: 'login',
   component: LoginComponent},
@@ -14,7 +14,7 @@ const routes: Routes = [
   component: RegisterComponent},
   {path: 'kitchen',
   component: KitchenComponent},
-  {path: 'menu',
+  {path: 'menu/:id',
   component: MenuComponent}
 ];
 

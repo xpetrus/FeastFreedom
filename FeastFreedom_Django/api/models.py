@@ -23,10 +23,17 @@ class Kitchen(models.Model):
         numberOfItems = MenuItem.objects.filter(kitchen=self)
         return len(numberOfItems)
 
+    def all_menu_items(self):
+
+        qmenu = MenuItem.objects.filter(kitchen=self)
+        themenu = [item.id for item in qmenu]
+        print(themenu)
+        return themenu
+
 
 class MenuItem(models.Model):
     kitchen = models.ForeignKey(
-        'Kitchen', on_delete=models.CASCADE, related_name='menu')
+        Kitchen, on_delete=models.CASCADE, related_name='menu')
     name = models.CharField(max_length=255)
     is_veg = models.BooleanField(default=False)
     price = models.DecimalField(decimal_places=2, max_digits=8)

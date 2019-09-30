@@ -1,12 +1,12 @@
-<p>kitchen works!</p>
 <button class = 'btn btn-danger' (click)="logout()">Log Out</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add a Kitchen</button>
 <div class = "container">
     <div class = "wrapper">
-        <div *ngFor="let kitchen of tempKitchens; let i = index" [attr.data-index]='i' >
+        <div *ngFor="let kitchen of tempKitchens; let i = index" [attr.data-index]='i' routerLink = "/menu/{{i+1}}" >
             <div class="card kitchenCard">
-                <img src="..." class="card-img-top" alt="...">
+                <img [src]=kitchen.image class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{kitchen.name}}</h5>
+                <h5 class="card-title">{{kitchen.name | titlecase}}</h5>
                 <p class="card-text">Some {{i+1}} quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
@@ -14,3 +14,57 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add New Kitchen</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+        <label for="kitchen_name">Kitchen Name</label>
+        <p><input id = "kitchen_name" [(ngModel)]="createdKitchen.name" placeholder="Kitchen Name" class = 'form-control'></p>        
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="work_mon" [(ngModel)]="createdKitchen.work_mon">
+            <label class="form-check-label" for="work_mon">Work Mondays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_tue" [(ngModel)]="createdKitchen.work_tue">
+            <label class="form-check-label" for="work_tue">Work Tuesdays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_wed" [(ngModel)]="createdKitchen.work_wed">
+            <label class="form-check-label" for="work_wed">Work Wednesdays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_thu" [(ngModel)]="createdKitchen.work_thu">
+            <label class="form-check-label" for="work_thu">Work Thursdays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_fri" [(ngModel)]="createdKitchen.work_fri">
+            <label class="form-check-label" for="work_fri">Work Fridays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_sat" [(ngModel)]="createdKitchen.work_sat">
+            <label class="form-check-label" for="work_sat">Work Saturdays</label>
+
+            <input type="checkbox" class="form-check-input" id="work_sun" [(ngModel)]="createdKitchen.work_sun">
+            <label class="form-check-label" for="work_sun">Work Sundays</label>
+
+        </div>
+
+        <label for="start_time" class="startTime">Start Time:</label>
+        <ngb-timepicker id="start_time" [(ngModel)]="startTime" [meridian]="meridian"></ngb-timepicker>
+
+        <label for="end_time" class="startTime">End Time:</label>
+        <ngb-timepicker id="end_time" [(ngModel)]="endTime" [meridian]="meridian"></ngb-timepicker>
+
+        <label for="kitchen_image">Image</label>
+        <p><input id = "kitchen_image" [(ngModel)]="createdKitchen.image" placeholder="Image" class = 'form-control'></p>    
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="createKitchen()">Save</button>  <!--modal.close('Save click')-->
+  </div>
+</ng-template>
+
+
+

@@ -14,6 +14,7 @@ import { KitchenComponent } from './kitchen/kitchen.component';
 import { PageCheckService } from './page-check.service';
 import { from } from 'rxjs';
 import { MenuComponent } from './menu/menu.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MenuComponent } from './menu/menu.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [CookieService, PageCheckService, ApiService],
   bootstrap: [AppComponent]

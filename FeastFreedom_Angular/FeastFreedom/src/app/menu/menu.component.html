@@ -1,1 +1,14 @@
 <p>menu works!</p>
+<div class = "container">
+    <div class = "jumbotron">
+        <h1 class = "menutitle">{{menuItems.name}}</h1>
+        <div *ngFor="let items of realMenu;" class = "menuWrap">
+        <p>
+            <span class = "itemName">{{items.name | titlecase}}</span> .......... {{items.price | currency}}
+        </p>
+        
+        <p class = "itemDescription">{{items.description}}</p>
+        </div>
+        <button (click)="goBack()">Back to Kitchens</button>
+    </div>
+</div>

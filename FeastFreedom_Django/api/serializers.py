@@ -8,7 +8,7 @@ class KitchenSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Kitchen
         fields = ('name', 'work_mon', 'work_tue', 'work_wed', 'work_thu', 'work_fri', 'work_sat', 'work_sun',
-                  'start_time', 'end_time', 'image', 'no_of_items')
+                  'start_time', 'end_time', 'image', 'no_of_items', 'all_menu_items')
 
 
 class MenuSerializer(serializers.HyperlinkedModelSerializer):

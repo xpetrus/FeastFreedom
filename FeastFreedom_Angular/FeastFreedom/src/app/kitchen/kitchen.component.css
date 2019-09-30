@@ -5,7 +5,6 @@
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
     
 }
-
 .wrapper {
     height: 100%;
     display: flex;
@@ -15,3 +14,15 @@
     align-content: flex-start;
     overflow: auto;
   }
+
+.form-check-label{
+    margin-right: 30px;
+    
+}
+.form-check-input{
+    padding-left: 30px;
+}
+.startTime{
+    font-weight: bold;
+}
+
