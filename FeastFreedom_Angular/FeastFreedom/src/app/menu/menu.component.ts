@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-menu',
@@ -12,14 +13,24 @@ import { Location } from '@angular/common';
 export class MenuComponent implements OnInit {
 
   menuItems: any = [];
-
+  closeResult: string;
   realMenu: any = [];
+  newMenuItem;
+  id = +this.route.snapshot.paramMap.get('id');
 
   constructor(private route: ActivatedRoute, private apiService: ApiService,
-              private location: Location) { }
+              private location: Location, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit() {
     this.getMenuItems();  // step 1
+
+    this.newMenuItem = {
+      kitchen: '',
+      name: '',
+      is_veg: false,
+      price: '',
+      description: '',
+    };
   }
 
   getMenuItems() { // step 2
@@ -39,6 +50,28 @@ export class MenuComponent implements OnInit {
       });
     }
     console.log(this.realMenu);
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      console.log(reason);
+    });
+  }
+
+  createMenuItem(kid) {
+    console.log(kid);
+    this.newMenuItem.kitchen = 'http://localhost:8000/api/kitchens/' + kid + '/';
+    this.apiService.createMenuItem(this.newMenuItem).subscribe(
+      response => {
+        alert('Menu Item Created!');
+        // this.router.navigate(['/menu/' + kid]);
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+        this.router.navigate(['/menu/' + kid]));
+      },
+      error => alert('error' + error)
+    );
   }
 
   goBack(): void {

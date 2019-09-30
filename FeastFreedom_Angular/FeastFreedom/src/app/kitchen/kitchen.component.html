@@ -1,14 +1,20 @@
 <button class = 'btn btn-danger' (click)="logout()">Log Out</button>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add a Kitchen</button>
+<div align="center">
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add a Kitchen</button>
+</div>
+
 <div class = "container">
     <div class = "wrapper">
         <div *ngFor="let kitchen of tempKitchens; let i = index" [attr.data-index]='i' routerLink = "/menu/{{i+1}}" >
             <div class="card kitchenCard">
-                <img [src]=kitchen.image class="card-img-top" alt="...">
+                <img src="../../assets/img/rest.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{kitchen.name | titlecase}}</h5>
-                <p class="card-text">Some {{i+1}} quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h4 class="card-title">{{kitchen.name | titlecase}}</h4>
+                  <p class="card-text"><span class = 'startTime'>Kitchen {{i+1}}: </span> {{kitchen.name}} <br>
+                    <span class = 'startTime'>Opening Time:</span> {{kitchen.start_time}} <br>
+                    <span class = 'startTime'>Closing Time:</span> {{kitchen.end_time}} <br>
+                  </p>
+                
                 </div>
             </div>
         </div>

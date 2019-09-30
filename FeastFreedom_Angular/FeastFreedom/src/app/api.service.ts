@@ -35,4 +35,8 @@ export class ApiService {
   createKitchen(kitchenData): Observable<any> {
     return this.httpClient.post('http://localhost:8000/api/kitchens/', kitchenData);
   }
+
+  createMenuItem(menuData): Observable<any> {
+    return this.httpClient.post(this.menuUrl, menuData);
+  }
 }

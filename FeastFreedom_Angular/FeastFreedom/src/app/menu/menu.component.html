@@ -1,14 +1,51 @@
-<p>menu works!</p>
 <div class = "container">
-    <div class = "jumbotron">
+    <div class = "jumbotron menujumb">
         <h1 class = "menutitle">{{menuItems.name}}</h1>
+        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add a Menu Item</button>
         <div *ngFor="let items of realMenu;" class = "menuWrap">
         <p>
             <span class = "itemName">{{items.name | titlecase}}</span> .......... {{items.price | currency}}
         </p>
         
-        <p class = "itemDescription">{{items.description}}</p>
+        <p class = "itemDescription">{{items.description}}
+            <span class="boldthis" *ngIf="items.is_veg">*Vegetarian*</span>
+        </p>
+        
         </div>
         <button (click)="goBack()">Back to Kitchens</button>
     </div>
 </div>
+
+
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Add New Menu Item</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            <!--<input hidden id = "kitc" [(ngModel)]="newMenuItem.kitchen" class = 'form-control' value="{{id}}">-->
+      
+              <label for="item_name">Item Name</label>
+              <p><input id = "item_name" [(ngModel)]="newMenuItem.name" placeholder="Item Name" class = 'form-control'></p>  
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="is_veg" [(ngModel)]="newMenuItem.is_veg">
+                    <label class="form-check-label" for="is_veg">Is Vegetarian</label>
+                </div>  
+              
+              <label for="item_price">Item Price</label>
+              <p><input id = "item_price" [(ngModel)]="newMenuItem.price" placeholder="Price" class = 'form-control'></p>      
+
+              <label for="item_description">Item Description</label>
+              <p><input id = "item_description" [(ngModel)]="newMenuItem.description" placeholder="Description" class = 'form-control'></p>      
+      
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="createMenuItem(id); modal.close('Save click')">Save</button>  <!--modal.close('Save click')-->
+        </div>
+</ng-template>
+

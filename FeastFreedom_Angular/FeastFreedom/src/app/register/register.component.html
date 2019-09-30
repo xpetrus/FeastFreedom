@@ -1,27 +1,57 @@
 <div class = "container">
-    <div *ngIf="!providerRegister" class ="jumbotron">
-        <h2>Register User</h2>
-        <label for="email">Email</label>
-        <p><input id = "email" [(ngModel)]="register.email" placeholder="Email"></p>
-        <label for="password">Password</label>
-        <p><input id = "password" [(ngModel)]="register.password" type = "password" placeholder="Password"></p>
-        <label for="name">Full Name</label>
-        <p><input id = "name" [(ngModel)]="register.name" placeholder="Full Name"></p>
-        <button class = "btn btn-success" (click)="registerUser()">Register User</button>
-        <button class = "btn btn-secondary" routerLink = "/login">Go to Login</button>
+    <div class = "row">
+        <div class = "col-sm-3">
+
+        </div>
+        <div class = "col-md-6">
+                <div *ngIf="!providerRegister" class ="jumbotron">
+                        <h2>Register User</h2>
+                        <label for="email">Email</label>
+                        <p><input required class="form-control" id = "email" [(ngModel)]="register.email" placeholder="Email" #email ="ngModel"></p>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                            <div *ngIf="email.errors.required">
+                                Email is required.
+                            </div>
+
+
+
+                        </div>
+
+                        <label for="password">Password</label>
+                        <p><input required class="form-control" id = "password" [(ngModel)]="register.password" #password = "ngModel" type = "password" placeholder="Password"></p>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">
+                                Password is required.
+                            </div>
+                        </div>
+
+
+
+                        <label for="name">Full Name</label>
+                        <p><input class="form-control" id = "name" [(ngModel)]="register.name" placeholder="Full Name"></p>
+                        <button class = "btn btn-success" (click)="registerUser()">Register User</button>
+                        <button class = "btn btn-secondary" routerLink = "/login">Go to Login</button>
+                    </div>
+                
+                    <div *ngIf="providerRegister" class ="jumbotron">
+                        <h2>Register Provider</h2>
+                        <label for="email">Email</label>
+                        <p><input class="form-control" id = "email" [(ngModel)]="register.email" placeholder="Email"></p>
+                        <label for="password">Password</label>
+                        <p><input class="form-control" id = "password" [(ngModel)]="register.password" type = "password" placeholder="Password"></p>
+                        <label for="full_name">Full Name</label>
+                        <p><input class="form-control" id = "full_name" [(ngModel)]="register.full_name" placeholder="Kitchen/Provider Name"></p>
+                        <button class = "btn btn-success" (click)="registerProvider()">Register Provider</button>
+                        <button class = "btn btn-secondary" routerLink = "/login">Go to Login</button>
+                    </div>
+
+        </div>
+        <div class = "col-sm-3">
+
+        </div>
     </div>
 
-    <div *ngIf="providerRegister" class ="jumbotron">
-        <h2>Register Provider</h2>
-        <label for="email">Email</label>
-        <p><input id = "email" [(ngModel)]="register.email" placeholder="Email"></p>
-        <label for="password">Password</label>
-        <p><input id = "password" [(ngModel)]="register.password" type = "password" placeholder="Password"></p>
-        <label for="full_name">Full Name</label>
-        <p><input id = "full_name" [(ngModel)]="register.full_name" placeholder="Kitchen/Provider Name"></p>
-        <button class = "btn btn-success" (click)="registerProvider()">Register Provider</button>
-        <button class = "btn btn-secondary" routerLink = "/login">Go to Login</button>
-    </div>
 
 
 </div>

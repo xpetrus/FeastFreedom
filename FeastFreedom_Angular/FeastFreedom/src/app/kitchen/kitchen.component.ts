@@ -49,8 +49,8 @@ export class KitchenComponent implements OnInit {
       work_fri: false,
       work_sat: false,
       work_sun: false,
-      start_time: '',
-      end_time: '',
+      start_time: '01:00',
+      end_time: '24:00',
       image: ''
     };
 
